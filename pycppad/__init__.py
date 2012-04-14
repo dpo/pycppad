@@ -14,20 +14,20 @@
 #
 # $head Purpose$$
 # Creates an AD object $icode a_x$$ that records floating point operations.
-# An $cref/adfun/$$ object can later use this recording to evaluate 
+# An $cref/adfun/$$ object can later use this recording to evaluate
 # function values and derivatives. These later evaluations are done
-# using the same type as $icode x$$ 
+# using the same type as $icode x$$
 # (except when $icode x$$ is an instance of $code int$$,
 # the later evaluations are done using $code float$$ operations).
 #
-# $head x$$ 
+# $head x$$
 # The argument $icode x$$ can be an instance of an $code int$$ (AD level 0),
 # or an instance of $code float$$ (AD level 0),
 # or an $code a_float$$ (AD level 1).
 # The argument $icode x$$ may also be a $code numpy.array$$ with one of the
 # element types listed in the previous sentence.
 #
-# $head a_x$$ 
+# $head a_x$$
 # $index a_float, create$$
 # $index create, a_float$$
 # $index a2float, create$$
@@ -37,9 +37,9 @@
 # If $icode x$$ is an $code a_float$$,
 # $icode a_x$$ is an $code a2float$$ (AD level 2).
 # If $icode x$$ is an $code numpy.array$$,
-# $icode a_x$$ is also an $code numpy.array$$ with the 
+# $icode a_x$$ is also an $code numpy.array$$ with the
 # same shape as $icode x$$.
-# 
+#
 # $children%
 #	example/ad.py
 # %$$
@@ -65,21 +65,21 @@
 # $head Purpose$$
 # Returns an object with one lower level of AD recording.
 #
-# $head a_x$$ 
+# $head a_x$$
 # The argument $icode a_x$$ must be an $code a_float$$ (AD level 1),
 # or an $code a2float$$ (AD level 2).
 # The argument $icode a_x$$ may also be a $code numpy.array$$ with one of the
 # element types listed in the previous sentence.
 #
-# $head x$$ 
+# $head x$$
 # If $icode a_x$$ is an $code a_float$$,
 # $icode x$$ is a $code float$$ (AD level 0).
 # If $icode a_x$$ is an $code a2float$$,
 # $icode x$$ is an $code a_float$$ (AD level 1).
 # If $icode a_x$$ is an $code numpy.array$$,
-# $icode x$$ is also an $code numpy.array$$ with the 
+# $icode x$$ is also an $code numpy.array$$ with the
 # same shape as $icode a_x$$.
-# 
+#
 # $children%
 #	example/value.py
 # %$$
@@ -108,8 +108,8 @@ from cppad_ import condexp_gt
 def ad(x) :
   """
   ad(x): returns an object with one higher level of automatic differentiation.
-  If x is an int, or float (AD level 0), ad(x) is an a_float 
-  (AD level 1).  If x is an a_float (AD level 1), ad(x) is an a2float 
+  If x is an int, or float (AD level 0), ad(x) is an a_float
+  (AD level 1).  If x is an a_float (AD level 1), ad(x) is an a2float
   (AD level 2).  Higher AD levels for the argument x are not yet supported.
   """
   if isinstance(x, int) :
@@ -132,8 +132,8 @@ def ad(x) :
 def value(a_x) :
   """
   value(a_x): returns object with one lower level of automatic differentation.
-  If a_x is an a_float, value(a_x) is a float (AD level 0). 
-  If a_x is an a2float, value(a_x) is an a_float (AD level 1). 
+  If a_x is an a_float, value(a_x) is a float (AD level 0).
+  If a_x is an a2float, value(a_x) is an a_float (AD level 1).
   """
   if isinstance(a_x, a_float) :
     return cppad_.float_(a_x);
